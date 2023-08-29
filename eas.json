@@ -1,0 +1,34 @@
+{
+  "cli": {
+    "version": ">= 4.1.2"
+  },
+  "build": {
+    "local-development": {
+      "extends": "development",
+      "developmentClient": true,
+      "ios": {
+        "simulator": true
+      }
+    },
+    "development": {
+      "distribution": "internal",
+      "extends": "production",
+      "android": {
+        "gradleCommand": ":app:assembleDebug"
+      },
+      "ios": {
+        "buildConfiguration": "Debug"
+      }
+    },
+    "production": {
+      "env": { 
+        "BRAZE_ANDROID_API_KEY": "secret override",
+        "BRAZE_IOS_API_KEY": "secret override",
+        "BRAZE_SDK_ENDPOINT": "secret override" 
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}
